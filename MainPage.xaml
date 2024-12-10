@@ -5,6 +5,7 @@
 
     <ScrollView>
         <VerticalStackLayout
+            x:Name="VStackLayout"
             Padding="25,0,25,50"
             Spacing="5">
             <Image
@@ -14,23 +15,33 @@
                 SemanticProperties.Description="dot net bot in a hovercraft number nine" />
 
             <Label
-                Text="Hello, World!"
+                Text="Wake on LAN"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button
+                    x:Name="btnWakeLan"
+                    Text="Wake LAN" 
+                    WidthRequest="150"
+                    SemanticProperties.Hint="Wake PC Using LAN"
+                    Clicked="btnWakeLan_Clicked"
+                    HorizontalOptions="Fill" />
+                <Button
+                    x:Name="btnWakeWan"
+                    Text="Wake WAN" 
+                    WidthRequest="150"
+                    SemanticProperties.Hint="Wake PC Using WAN"
+                    Clicked="btnWakeWan_Clicked"
+                    HorizontalOptions="Fill" />
+                
+            </HorizontalStackLayout>
             <Label
-                Text="Welcome to &#10;.NET Multi-platform App UI"
+                x:Name="lblDescription"
+                Text="Click to Wake on Lan"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                WidthRequest="150"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
 

@@ -9,16 +9,28 @@
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void btnWakeLan_Clicked(object sender, EventArgs e)
         {
-            count++;
+            var computer = new Models.Device()
+            {
+                Name = "Cesar PC",
+                MacAddress = "04:D4:C4:56:31:64",
+                HostName = "192.168.3.100",
+                Port = 3000,
+            };
+            computer.Wake();
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private void btnWakeWan_Clicked(object sender, EventArgs e)
+        {
+            var computer = new Models.Device()
+            {
+                Name = "Cesar PC",
+                MacAddress = "04:D4:C4:56:31:64",
+                HostName = "cv.tplinkdns.com",
+                Port = 3000,
+            };
+            computer.Wake();
         }
     }
 
