@@ -18,8 +18,16 @@ public class Device
 
     public uint Port { get; set; }
 
-    public void Wake()
+    public ETipoConexao TypeConnection { get; set; }
+
+    public enum ETipoConexao
     {
-        new WakeOnLanController().WakeOnLan(this);
+        LAN,
+        WAN,
+    }
+
+    public string Wake()
+    {
+        return new WakeOnLanController().WakeOnLan(this);
     }
 }

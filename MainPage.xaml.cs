@@ -2,8 +2,6 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
@@ -16,7 +14,6 @@
                 Name = "Cesar PC",
                 MacAddress = "04:D4:C4:56:31:64",
                 HostName = "192.168.3.100",
-                Port = 3000,
             };
             computer.Wake();
         }
@@ -30,7 +27,10 @@
                 HostName = "cv.tplinkdns.com",
                 Port = 3000,
             };
-            computer.Wake();
+            string retorno = computer.Wake();
+
+            DisplayAlert(string.Empty, retorno, "OK");
+
         }
     }
 
