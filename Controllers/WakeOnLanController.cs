@@ -40,7 +40,7 @@ public class WakeOnLanController
         }
     }
 
-    internal byte[] ParseMacAddress(string macAddress)
+    private byte[] ParseMacAddress(string macAddress)
     {
         return macAddress.Split(':').Select(hex => Convert.ToByte(hex, 16)).ToArray();
     }
