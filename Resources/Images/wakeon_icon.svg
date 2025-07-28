@@ -1,0 +1,15 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo transparente -->
+  <rect x="0" y="0" width="200" height="200" rx="40" fill="none"/>
+
+  <!-- Monitor/Computador estilizado redimensionado -->
+  <rect x="25" y="30" width="150" height="110" rx="15" fill="#42A5F5"/>
+  <rect x="35" y="40" width="130" height="90" rx="10" fill="#BBDEFB"/>
+
+  <!-- Base do monitor redimensionada -->
+  <path d="M60 140 L140 140 L130 170 L70 170 Z" fill="#607D8B"/>
+
+  <!-- Botão de power centralizado na tela do monitor -->
+  <circle cx="100" cy="85" r="25" stroke="#FF5733" stroke-width="8" fill="none"/>
+  <path d="M100 55V75" stroke="#FF5733" stroke-width="8" stroke-linecap="round"/>
+</svg>

@@ -9,7 +9,7 @@
             Padding="25,0,25,50"
             Spacing="5">
             <Image
-                Source="dotnet_bot.png"
+                Source="wakeon_icon.png"
                 HeightRequest="100"
                 Aspect="AspectFit"
                 SemanticProperties.Description="dot net bot in a hovercraft number nine" />
