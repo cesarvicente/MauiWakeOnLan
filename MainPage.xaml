@@ -3,46 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiWakeOnLan.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            x:Name="VStackLayout"
-            Padding="25,0,25,50"
-            Spacing="5">
-            <Image
-                Source="wakeon_icon.png"
-                HeightRequest="100"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
-
-            <Label
-                Text="Wake on LAN"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1" />
-
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Button
-                    x:Name="btnWakeLan"
-                    Text="Wake LAN" 
-                    WidthRequest="150"
-                    SemanticProperties.Hint="Wake PC Using LAN"
-                    Clicked="btnWakeLan_Clicked"
-                    HorizontalOptions="Fill" />
-                <Button
-                    x:Name="btnWakeWan"
-                    Text="Wake WAN" 
-                    WidthRequest="150"
-                    SemanticProperties.Hint="Wake PC Using WAN"
-                    Clicked="btnWakeWan_Clicked"
-                    HorizontalOptions="Fill" />
-                
-            </HorizontalStackLayout>
-            <Label
-                x:Name="lblDescription"
-                Text="Click to Wake on Lan"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+    <Grid>
+        <VerticalStackLayout Padding="25,25,25,50" Spacing="5" BackgroundColor="Black">
+            <CarouselView x:Name="carouselView" IndicatorView="indicatorView">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <BoxView HeightRequest="100" Color="{Color Black}" />
+                            <Button
+                                x:Name="btnWake"
+                                Text="{Binding Text}"
+                                Command="{Binding Command}"
+                                ImageSource="{Binding ImageSource}"
+                                WidthRequest="150"
+                                HeightRequest="50"
+                                HorizontalOptions="Fill" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView x:Name="indicatorView" Margin="5" HorizontalOptions="Center"/>
         </VerticalStackLayout>
-    </ScrollView>
-
+        <VerticalStackLayout Padding="25,25,25,50" Spacing="5">
+            <Image
+                x:Name="imagePC"
+                Source="wakeon_icon.png" 
+                HeightRequest="100"
+                Aspect="AspectFit" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

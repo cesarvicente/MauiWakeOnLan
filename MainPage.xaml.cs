@@ -1,14 +1,18 @@
-﻿namespace MauiWakeOnLan
+﻿using Microsoft.Maui.Controls;
+
+namespace MauiWakeOnLan
 {
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
+            carouselView.ItemsSource = LoadButtons();
         }
 
-        private void btnWakeLan_Clicked(object sender, EventArgs e)
+        private void btnWakeLan_Clicked()
         {
+            carouselView.IsEnabled = false;
             var computer = new Models.Device()
             {
                 Name = "Cesar PC",
@@ -16,10 +20,13 @@
                 HostName = "192.168.3.100",
             };
             computer.Wake();
+            AnimateIcon();
+            carouselView.IsEnabled = true;
         }
 
-        private void btnWakeWan_Clicked(object sender, EventArgs e)
+        private void btnWakeWan_Clicked()
         {
+            carouselView.IsEnabled = false;
             var computer = new Models.Device()
             {
                 Name = "Cesar PC",
@@ -28,10 +35,38 @@
                 Port = 3000,
             };
             string retorno = computer.Wake();
+            AnimateIcon();
+            carouselView.IsEnabled = true;
+        }
 
-            DisplayAlert(string.Empty, retorno, "OK");
+        private List<Button> LoadButtons()
+        {
+            return new List<Button> 
+            { 
+                new Button
+                {
+                    Text = "Wake WAN",
+                    ImageSource = "icon_wan.png",
+                    Command = new Command(btnWakeWan_Clicked),
+                },
+                new Button
+                {
+                    Text = "Wake LAN",
+                    ImageSource = "icon_lan.png",
+                    Command = new Command(btnWakeLan_Clicked),
+                }
+            };
+        }
 
+        private async void AnimateIcon()
+        {
+            await imagePC.TranslateTo(10, 0, 25); 
+            await imagePC.TranslateTo(-10, 0, 50);
+            await imagePC.TranslateTo(10, 0, 25);
+            await imagePC.TranslateTo(-10, 0, 50);
+            await imagePC.TranslateTo(10, 0, 25);
+            await imagePC.TranslateTo(-10, 0, 50);
+            await imagePC.TranslateTo(0, 0, 50);
         }
     }
-
 }
