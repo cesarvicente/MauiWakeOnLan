@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace MauiWakeOnLan
+﻿namespace MauiWakeOnLan
 {
     public partial class MainPage : ContentPage
     {
@@ -18,12 +16,14 @@ namespace MauiWakeOnLan
                 Name = "Cesar PC",
                 MacAddress = "04:D4:C4:56:31:64",
                 HostName = "192.168.3.100",
+                TypeConnection = Models.Device.ETipoConexao.LAN,
+                Port = 7
             };
             string retorno = computer.Wake();
             AnimateIcon();
             carouselView.IsEnabled = true;
 
-            if (string.IsNullOrEmpty(retorno)) DisplayAlert(string.Empty, retorno, "OK");
+            if (!string.IsNullOrEmpty(retorno)) DisplayAlert(string.Empty, retorno, "OK");
         }
 
         private void btnWakeWan_Clicked()
@@ -35,13 +35,14 @@ namespace MauiWakeOnLan
                 MacAddress = "04:D4:C4:56:31:64",
                 HostName = "cv.tplinkdns.com",
                 Port = 3000,
+                TypeConnection = Models.Device.ETipoConexao.WAN
             };
             string retorno = computer.Wake();
 
             AnimateIcon();
             carouselView.IsEnabled = true;
 
-            if (string.IsNullOrEmpty(retorno)) DisplayAlert(string.Empty, retorno, "OK");
+            if (!string.IsNullOrEmpty(retorno)) DisplayAlert(string.Empty, retorno, "OK");
         }
 
         private List<Button> LoadButtons()
