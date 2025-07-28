@@ -9,7 +9,7 @@
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout>
-                            <BoxView HeightRequest="100" Color="{Color Black}" />
+                            <BoxView HeightRequest="100" Color="{StaticResource Black}" />
                             <Button
                                 x:Name="btnWake"
                                 Text="{Binding Text}"

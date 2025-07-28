@@ -19,9 +19,11 @@ namespace MauiWakeOnLan
                 MacAddress = "04:D4:C4:56:31:64",
                 HostName = "192.168.3.100",
             };
-            computer.Wake();
+            string retorno = computer.Wake();
             AnimateIcon();
             carouselView.IsEnabled = true;
+
+            if (string.IsNullOrEmpty(retorno)) DisplayAlert(string.Empty, retorno, "OK");
         }
 
         private void btnWakeWan_Clicked()
@@ -35,8 +37,11 @@ namespace MauiWakeOnLan
                 Port = 3000,
             };
             string retorno = computer.Wake();
+
             AnimateIcon();
             carouselView.IsEnabled = true;
+
+            if (string.IsNullOrEmpty(retorno)) DisplayAlert(string.Empty, retorno, "OK");
         }
 
         private List<Button> LoadButtons()

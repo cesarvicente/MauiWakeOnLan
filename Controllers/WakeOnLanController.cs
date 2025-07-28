@@ -21,18 +21,22 @@ public class WakeOnLanController
 
             using (var client = new UdpClient())
             {
-                if (device.TypeConnection == Models.Device.ETipoConexao.WAN)
-                {
-                    client.Send(magicPacket, magicPacket.Length, device.HostName ?? "255.255.255.255", (int)device.Port);
-                }
-                else
-                {
-                    client.Send(magicPacket, magicPacket.Length, device.HostName ?? "255.255.255.255", 7);
-                    client.Send(magicPacket, magicPacket.Length, device.HostName ?? "255.255.255.255", 9);
+                if (string.IsNullOrEmpty(device.HostName))
+                    throw new ArgumentException("HostName é obrigatório para conexão WAN.");
 
+                switch (device.TypeConnection)
+                {
+                    case Models.Device.ETipoConexao.WAN:
+                        client.Send(magicPacket, magicPacket.Length, device.HostName, (int)device.Port);
+                        break;
+
+                    case Models.Device.ETipoConexao.LAN:
+                        client.Send(magicPacket, magicPacket.Length, device.HostName, 7);
+                        client.Send(magicPacket, magicPacket.Length, device.HostName, 9);
+                        break;
                 }
             }
-            return "Envio Realizado!";
+            return string.Empty;
         }
         catch (Exception ex)
         {
