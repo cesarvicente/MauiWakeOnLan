@@ -28,6 +28,6 @@ public class Device
 
     public string Wake()
     {
-        return new WakeOnLanController().WakeOnLan(this);
+        return WakeOnLanController.WakeOnLan(this);
     }
 }

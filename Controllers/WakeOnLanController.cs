@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MauiWakeOnLan.Controllers;
 
-public class WakeOnLanController
+public static class WakeOnLanController
 {
-    internal string WakeOnLan(Models.Device device)
+    internal static string WakeOnLan(Models.Device device)
     {
         try
         {
@@ -44,12 +46,12 @@ public class WakeOnLanController
         }
     }
 
-    private byte[] ParseMacAddress(string macAddress)
+    private static byte[] ParseMacAddress(string macAddress)
     {
         return macAddress.Split(':').Select(hex => Convert.ToByte(hex, 16)).ToArray();
     }
 
-    private byte[] CreateMagicPacket(byte[] macBytes)
+    private static byte[] CreateMagicPacket(byte[] macBytes)
     {
         byte[] packet = new byte[102];
         for (int i = 0; i < 6; i++) packet[i] = 0xFF;
